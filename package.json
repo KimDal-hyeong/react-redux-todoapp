@@ -13,7 +13,6 @@
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
     "react-router": "v3.2.0",
-    "react-scripts": "1.1.4",
     "redux": "^4.0.0",
     "redux-actions": "^2.3.2",
     "redux-immutable": "^4.0.0",
@@ -22,10 +21,25 @@
     "todomvc-app-css": "^2.1.2",
     "todomvc-common": "^1.0.5"
   },
+  "devDependencies": {
+    "babel-loader": "^7.1.4",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^22.4.4",
+    "react-hot-loader": "^4.2.0",
+    "style-loader": "^0.21.0",
+    "webpack": "3.11.0",
+    "webpack-dev-server": "^2.11.2"
+  },
   "scripts": {
-    "start": "node apiServer.js & react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "webpack-dev-server --config webpack.config.js --inline --watch --host 0.0.0.0 & node apiServer.js",
+    "build": "webpack --config webpack.config.js",
+    "test": "NODE_ENV=test jest",
   }
 }
