@@ -22,6 +22,13 @@
     "todomvc-common": "^1.0.5"
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^3.4.2",
+    "@storybook/addon-actions": "^3.4.2",
+    "@storybook/addon-info": "^3.4.2",
+    "@storybook/addon-knobs": "^3.4.2",
+    "@storybook/addon-links": "^3.4.2",
+    "@storybook/addon-options": "^3.4.2",
+    "@storybook/react": "^3.4.5",
     "babel-loader": "^7.1.4",
     "babel-plugin-dynamic-import-node": "^1.2.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
@@ -40,6 +47,7 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.js --inline --watch --host 0.0.0.0 & node apiServer.js",
     "build": "webpack --config webpack.config.js",
-    "test": "NODE_ENV=test jest"
+    "test": "NODE_ENV=test jest",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   }
 }
