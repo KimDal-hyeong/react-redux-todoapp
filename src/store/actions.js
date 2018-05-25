@@ -25,26 +25,9 @@ export const fetchTodoList = filter => dispatch => {
 };
 
 // todo 추가하기
-export const addTodoRequest = createAction(TYPES.TODO_ADD_REQUEST);
+export const addTodo = createAction(TYPES.TODO_ADD_REQUEST);
 export const addTodoSuccess = createAction(TYPES.TODO_ADD_SUCCESS);
 export const addTodoFailure = createAction(TYPES.TODO_ADD_FAILURE);
-
-export const addTodo = title => dispatch => {
-  dispatch(addTodoRequest());
-  axios({
-    url: '/todos',
-    method: 'POST',
-    baseURL: 'http://192.168.0.17:4000',
-    header: {'Content-Type': 'application/json'},
-    data: {title}
-  })
-    .then(response => {
-      dispatch(addTodoSuccess(response.data));
-    })
-    .catch(error => {
-      dispatch(addTodoFailure(error));
-    })
-};
 
 // todo 삭제하기
 export const deleteTodoRequest = createAction(TYPES.TODO_DELETE_REQUEST);
