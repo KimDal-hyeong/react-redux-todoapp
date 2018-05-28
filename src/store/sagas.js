@@ -23,12 +23,34 @@ export function* addTodo({ payload }) {
   }
 }
 
+export function* deleteTodo({ payload }) {
+  const id = payload;
+
+  const option = {
+    url: `/todos/${id}`,
+    method: 'DELETE',
+    baseURL: 'http://192.168.0.17:4000',
+  };
+
+  try {
+    const data = yield call(axios, option);
+    yield put(actions.deleteTodoSuccess(data));
+  } catch (error) {
+    yield put(actions.deleteTodoFailure(error));
+  }
+}
+
 export function* watchAddTodo() {
   yield takeEvery(TYPES.TODO_ADD_REQUEST, addTodo);
+}
+
+export function* watchDeleteTodo() {
+  yield takeEvery(TYPES.TODO_DELETE_REQUEST, deleteTodo);
 }
 
 export default function* sagas() {
   yield all([
     fork(watchAddTodo),
+    fork(watchDeleteTodo),
   ]);
 }

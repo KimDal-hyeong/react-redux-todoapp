@@ -30,24 +30,9 @@ export const addTodoSuccess = createAction(TYPES.TODO_ADD_SUCCESS);
 export const addTodoFailure = createAction(TYPES.TODO_ADD_FAILURE);
 
 // todo 삭제하기
-export const deleteTodoRequest = createAction(TYPES.TODO_DELETE_REQUEST);
+export const deleteTodo = createAction(TYPES.TODO_DELETE_REQUEST);
 export const deleteTodoSuccess = createAction(TYPES.TODO_DELETE_SUCCESS);
 export const deleteTodoFailure = createAction(TYPES.TODO_DELETE_FAILURE);
-
-export const deleteTodo = id => dispatch => {
-  dispatch(deleteTodoRequest());
-  axios({
-    url: `/todos/${id}`,
-    method: 'DELETE',
-    baseURL: 'http://192.168.0.17:4000',
-  })
-    .then(response => {
-      dispatch(deleteTodoSuccess(response.data));
-    })
-    .catch(error => {
-      dispatch(deleteTodoFailure(error));
-    })
-};
 
 // todo completed 변경하기
 export const toggleTodoCompletedRequest = createAction(TYPES.TODO_TOGGLE_COMPLETED_REQUEST);
